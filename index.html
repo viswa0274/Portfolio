@@ -364,6 +364,14 @@ header a {
   </style>
 </head>
 <body>
+  <script>
+  // Reset scroll to top on refresh
+  window.history.scrollRestoration = "manual";
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  };
+</script>
+
 <div id="lightbox">
   <span class="close">&times;</span>
   <span class="prev">&#10094;</span>
@@ -540,7 +548,26 @@ header a {
     <p>© 2025 Viswanathan S | Developed using HTML & CSS</p>
   </footer>
 
-  
+    <script>
+    // Reset scroll to top on refresh
+    window.history.scrollRestoration = "manual";
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    };
+
+    // Scroll animation
+    const elements = document.querySelectorAll('[data-animate]');
+    function checkScroll() {
+      const trigger = window.innerHeight * 0.85;
+      elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < trigger) el.classList.add('visible');
+      });
+    }
+    window.addEventListener('scroll', checkScroll);
+    window.addEventListener('load', checkScroll);
+  </script>
+
 </body>
 </html>
 
